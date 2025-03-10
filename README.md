@@ -34,3 +34,20 @@ Ouvre un terminal et clone le dépôt GitHub :
 ```bash
 git clone https://github.com/layelah/ProjetSGBD.git
 cd ProjetSGBD
+```
+
+2. Configurer l'environnement virtuel
+Crée un environnement virtuel et active-le :
+
+
+
+
+
+
+
+
+
+
+
+
+
