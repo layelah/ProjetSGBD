@@ -1,179 +1,257 @@
-# Projet : Plateforme intelligente d'évaluation automatisée des exercices de bases de données
 
-Ce projet consiste à développer une plateforme web permettant aux professeurs de déposer des sujets d'exercices en bases de données et aux étudiants de soumettre leurs réponses sous forme de fichiers PDF. La plateforme intègre un moteur d'intelligence artificielle pour la correction automatique des exercices.
-
-## Technologies utilisées
-
-- **Backend** : Django (Python)
-- **Frontend** : Angular (à développer)
-- **Base de données** : PostgreSQL
-- **Stockage de fichiers** : Système de fichiers local (pour le moment)
-- **API** : Django REST Framework (DRF)
-- **Gestion de version** : Git / GitHub
 
 ---
 
-## Prérequis
+# **Plateforme intelligente d'évaluation automatisée des exercices de bases de données**
 
-Avant de commencer, assure-toi d'avoir installé les outils suivants :
+## **Description du projet**
 
-1. **Python 3.10+** : [Télécharger Python](https://www.python.org/downloads/)
-2. **PostgreSQL** : [Télécharger PostgreSQL](https://www.postgresql.org/download/)
-3. **Git** : [Télécharger Git](https://git-scm.com/downloads)
-4. **Node.js** (pour Angular) : [Télécharger Node.js](https://nodejs.org/)
-5. **PyCharm** (optionnel) : [Télécharger PyCharm](https://www.jetbrains.com/pycharm/download/)
+Cette plateforme web permet aux professeurs de déposer des sujets d'exercices en bases de données et aux étudiants de soumettre leurs réponses sous forme de fichiers PDF. La plateforme utilise un moteur d'intelligence artificielle pour corriger automatiquement les exercices.
 
 ---
 
-## Installation et configuration
+## **Technologies utilisées**
 
-### 1. Cloner le dépôt
+- **Backend** : Django (Python)
+    
+- **Frontend** : Angular
+    
+- **Base de données** : PostgreSQL
+    
+- **Stockage de fichiers** : Système de fichiers local
+    
+- **API** : Django REST Framework (DRF)
+    
+- **Gestion de version** : Git / GitHub
+    
 
-Ouvre un terminal et clone le dépôt GitHub :
+---
 
-```bash
+## **Guide d'installation et d'exécution en local**
+
+### **Prérequis**
+
+Avant de commencer, assure-toi d'avoir installé les outils suivants avec les versions exactes indiquées :
+
+1. **Python 3.10+** : [Télécharger Python](https://www.python.org/downloads/)
+    
+2. **PostgreSQL** : [Télécharger PostgreSQL](https://www.postgresql.org/download/)
+    
+3. **Git** : [Télécharger Git](https://git-scm.com/downloads)
+    
+4. **Node.js v18.20.7** : [Télécharger Node.js](https://nodejs.org/)
+    
+5. **npm v9.9.4** (installé automatiquement avec Node.js)
+    
+6. **Angular CLI v16.2.16** (installé via npm)
+    
+7. **PgAdmin** (optionnel, pour gérer PostgreSQL) : [Télécharger PgAdmin](https://www.pgadmin.org/download/)
+    
+
+---
+
+### **Étape 1 : Cloner le dépôt GitHub**
+
+1. Ouvre un terminal (ou PowerShell sous Windows).
+    
+2. Clone le dépôt GitHub avec la commande suivante :
+
+```
 git clone https://github.com/layelah/ProjetSGBD.git
+```
+
+3. Déplace-toi dans le dossier du projet :
+
+```
 cd ProjetSGBD
 ```
 
-### 2. Configurer l'environnement virtuel
 
-Crée un environnement virtuel et active-le :
+---
+
+### **Étape 2 : Configurer l'environnement virtuel**
+
+1. Crée un environnement virtuel pour isoler les dépendances du projet :
 
 ```
+cd backend
 python -m venv .venv
-.venv\Scripts\activate  # Sur Windows
-source .venv/bin/activate  # Sur macOS/Linux
 ```
 
-### 3. Installer les dépendances Python
+2. Active l'environnement virtuel :
+- **Sur Windows** :
 
-Installe les packages nécessaires :
+```
+.venv\Scripts\activate
+```
+
+- **Sur macOS/Linux** :
+
+```
+source .venv/bin/activate
+```
+
+**Note** : Si tout s'est bien passé, tu verras `(.venv)` apparaître avant ton invite de commande.
+
+---
+
+### **Étape 3 : Installer les dépendances Python**
+
+1. Installe les packages nécessaires avec la commande suivante :
 
 ```
 pip install -r requirements.txt
 ```
 
-### 4. Configurer la base de données
+---
 
-1. **Créer une base de données PostgreSQL** :
+### **Étape 4 : Configurer la base de données PostgreSQL**
+
+1. **Installer PostgreSQL** :
     
-    - Ouvre pgAdmin ou un autre client PostgreSQL.
+    - Si tu ne l'as pas déjà fait, installe PostgreSQL depuis [le site officiel](https://www.postgresql.org/download/).
         
-    - Crée une base de données appelée `sgbd_platform` avec comme mot de passe `postgres`
+    - Pendant l'installation, utilise le mot de passe `postgres` pour etre en accord avec le projet ou sinon si tu as mis un autre mot de passe va sur le dossier sgbd_core/settings.py et modifie le mot de passe du postgres pour mettre le tiens
+        
+2. **Créer la base de données** :
+    
+    - Ouvre PgAdmin ou un autre client PostgreSQL.
+        
+    - Crée une nouvelle base de données appelée `sgbd_platform`.
+        
 
-### 5. Appliquer les migrations
+---
 
-Applique les migrations pour créer les tables dans la base de données :
+### **Étape 5 : Appliquer les migrations**
+
+1. Applique les migrations pour créer les tables dans la base de données :
 
 ```
 python manage.py migrate
 ```
 
-### 6. Créer un superutilisateur
+---
 
-Crée un compte administrateur pour accéder à l'interface d'administration Django :
+### **Étape 6 : Créer un superutilisateur**
+
+1. Crée un compte administrateur pour accéder à l'interface d'administration Django :
 
 ```
 python manage.py createsuperuser
 ```
 
-Suis les instructions pour entrer un nom d'utilisateur, un email et un mot de passe.
+1. Suis les instructions pour entrer un nom d'utilisateur, un email et un mot de passe.
 
-### 7. Lancer le serveur de développement
+---
 
-Démarre le serveur Django :
+### **Étape 7 : Lancer le serveur Django**
+
+1. Démarre le serveur de développement Django :
 
 ```
 python manage.py runserver
 ```
 
-Le serveur sera accessible à l'adresse : [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+1. Le serveur sera accessible à l'adresse : [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ---
 
-## Utilisation de l'API
+### **Étape 8 : Installer et lancer le frontend Angular**
 
-L'API est accessible via les endpoints suivants :
-
-### 1. **Utilisateurs**
-
-- **Liste des utilisateurs** : `GET /api/users/`
+1. **Installer Node.js v18.20.7** :
     
-- **Créer un utilisateur** : `POST /api/users/`
-    
-- **Détails d'un utilisateur** : `GET /api/users/{id}/`
-    
+    - Si tu ne l'as pas déjà fait, installe Node.js depuis [le site officiel](https://nodejs.org/).
+        
+    - Vérifie la version de Node.js avec :
 
-### 2. **Exercices**
+```
+node --version
+```
 
-- **Liste des exercices** : `GET /api/exercises/`
-    
-- **Créer un exercice** : `POST /api/exercises/`
-    
-- **Détails d'un exercice** : `GET /api/exercises/{id}/`
-    
+Vérifie la version de npm avec :
 
-### 3. **Soumissions**
+```
+npm --version
+```
 
-- **Liste des soumissions** : `GET /api/submissions/`
-    
-- **Créer une soumission** : `POST /api/submissions/`
-    
-- **Détails d'une soumission** : `GET /api/submissions/{id}/`
-    
+2. **Installer Angular CLI v16.2.16** :
 
----
+- Installe Angular CLI globalement avec la commande suivante :
 
-## Frontend (Angular)
+```
+npm install -g @angular/cli@16.2.16
+```
 
-### 1. Installer les dépendances Node.js
+Vérifie la version d'Angular CLI avec :
 
-Ouvre un terminal dans le dossier `frontend` (à créer) et installe les dépendances :
+```
+ng version
+```
+
+3. Installer les dépendances Angular** :
+
+- Ouvre un nouveau terminal dans le dossier `frontend` :
 
 ```
 cd frontend
 npm install
 ```
 
-### 2. Lancer le serveur de développement Angular
+4. **Lancer le serveur Angular** :
 
-Démarre le serveur Angular :
+- Démarre le serveur Angular avec la commande suivante :
 
 ```
 ng serve
 ```
 
-Le frontend sera accessible à l'adresse : [http://localhost:4200/](http://localhost:4200/).
+- Le frontend sera accessible à l'adresse : [http://localhost:4200/](http://localhost:4200/).
 
 ---
 
-## Contribution
+### **Étape 9 : Utiliser l'application**
 
-1. **Créer une nouvelle branche** :
-
-```
-git checkout -b nom_de_la_branche
-```
-
-2. **Faire des modifications** et les commit :
-
-```
-git add .
-git commit -m "Description des modifications"
-```
-
-3. **Pousser la branche sur GitHub** :
-
-```
-git push origin nom_de_la_branche
-```
-
-4. **Ouvrir une Pull Request (PR)** sur GitHub pour fusionner les modifications.
+1. **Backend (Django)** :
+    
+    - Accède à l'interface d'administration Django : [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
+        
+    - Utilise les identifiants du superutilisateur que tu as créés pour te connecter.
+        
+2. **Frontend (Angular)** :
+    
+    - Accède à l'interface utilisateur : [http://localhost:4200/](http://localhost:4200/).
+        
+    - Explore les fonctionnalités de la plateforme.
 
 ---
 
-## Auteurs
+### **Étape 10 : Tester l'API**
 
-- [Abdoulaye LAH](https://github.com/layelah)
+L'API est accessible via les endpoints suivants :
 
+- **Exercices** :
+    
+    - Liste des exercices : `GET /api/exercises/`
+        
+    - Créer un exercice : `POST /api/exercises/`
+        
+- **Soumissions** :
+    
+    - Liste des soumissions : `GET /api/submissions/`
+        
+    - Créer une soumission : `POST /api/submissions/`
+
+---
+
+## **Auteurs**
+
+- Abdoulaye LAH
+    
+
+---
+
+### **Problèmes courants**
+
+- Si tu rencontres des erreurs lors de l'installation des dépendances, assure-toi que les versions de Node.js, npm et Angular CLI correspondent exactement à celles indiquées.
+    
+- Si le serveur Django ne démarre pas, vérifie que la base de données est bien configurée dans le fichier `settings.py`
