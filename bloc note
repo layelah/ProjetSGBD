@@ -1,0 +1,13 @@
+#voici les différents serveur à lancer
+
+celery -A sgbd_core flower --port=5555
+
+redis-server
+
+olloma serve
+
+python manage.py runserver
+
+ng serve
+
+http://localhost:4200
